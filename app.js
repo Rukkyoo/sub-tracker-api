@@ -7,6 +7,7 @@ import authRouter from "./routes/auth.routes.js";
 import subscriptionsRouter from "./routes/subscription.routes.js";
 import connectToDatabase from "./Database/mongodb.js";
 import errorMiddleWare from "./middleware/error.middleware.js";
+import workflowRouter from "./routes/workflow.routes.js";
 const app = express();
 
 const limiter = rateLimit({
@@ -30,6 +31,7 @@ app.use(cookieParser());
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/subscriptions", subscriptionsRouter);
+app.use("/api/v1/workflows", workflowRouter)
 
 app.get("/", (req, res) => {
   res.send("Welcome to the Express.js server!");
